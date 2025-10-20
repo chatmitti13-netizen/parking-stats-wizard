@@ -3,71 +3,73 @@ import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { Car, TrendingUp, Calendar, LogOut, BarChart3 } from "lucide-react";
+import { Car, TrendingUp, Calendar, LogOut, BarChart3, RefreshCw, AlertCircle } from "lucide-react";
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
-
-// Mock data for demonstration
-const weeklyData = [
-  { name: "Dush", cars: 145 },
-  { name: "Sesh", cars: 178 },
-  { name: "Chor", cars: 156 },
-  { name: "Pay", cars: 189 },
-  { name: "Jum", cars: 234 },
-  { name: "Shan", cars: 267 },
-  { name: "Yak", cars: 198 },
-];
-
-const monthlyData = [
-  { name: "1-hafta", cars: 1203 },
-  { name: "2-hafta", cars: 1456 },
-  { name: "3-hafta", cars: 1389 },
-  { name: "4-hafta", cars: 1567 },
-];
+import { apiService, DashboardStats } from "@/lib/api";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const [todayCars, setTodayCars] = useState(0);
-  const [weeklyCars, setWeeklyCars] = useState(0);
-  const [monthlyCars, setMonthlyCars] = useState(0);
+  const [stats, setStats] = useState<DashboardStats | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  const loadDashboardData = async (showRefreshToast = false) => {
+    try {
+      if (showRefreshToast) {
+        setIsRefreshing(true);
+      }
+
+      const data = await apiService.getDashboardStats();
+      setStats(data);
+
+      if (showRefreshToast) {
+        toast.success("Ma'lumotlar yangilandi");
+      }
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "Ma'lumotlarni yuklashda xatolik";
+      toast.error(errorMessage);
+      
+      // If authentication error, redirect to login
+      if (errorMessage.includes("Session")) {
+        navigate("/");
+      }
+    } finally {
+      setIsLoading(false);
+      setIsRefreshing(false);
+    }
+  };
 
   useEffect(() => {
     // Check authentication
     const isAuthenticated = localStorage.getItem("isAuthenticated");
-    if (!isAuthenticated) {
+    const token = localStorage.getItem("access_token");
+    
+    if (!isAuthenticated || !token) {
       navigate("/");
       return;
     }
 
-    // Simulate real-time data with animation
-    const todayTarget = 198;
-    const weeklyTarget = 1356;
-    const monthlyTarget = 5615;
+    loadDashboardData();
 
-    const animateValue = (start: number, end: number, duration: number, setter: (value: number) => void) => {
-      const range = end - start;
-      const increment = range / (duration / 16);
-      let current = start;
+    // Auto refresh every 30 seconds
+    const interval = setInterval(() => {
+      loadDashboardData();
+    }, 30000);
 
-      const timer = setInterval(() => {
-        current += increment;
-        if (current >= end) {
-          setter(end);
-          clearInterval(timer);
-        } else {
-          setter(Math.floor(current));
-        }
-      }, 16);
-    };
-
-    animateValue(0, todayTarget, 1000, setTodayCars);
-    animateValue(0, weeklyTarget, 1200, setWeeklyCars);
-    animateValue(0, monthlyTarget, 1400, setMonthlyCars);
+    return () => clearInterval(interval);
   }, [navigate]);
 
   const handleLogout = () => {
     localStorage.removeItem("isAuthenticated");
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("username");
     toast.success("Tizimdan chiqdingiz");
     navigate("/");
+  };
+
+  const handleRefresh = () => {
+    loadDashboardData(true);
   };
 
   return (
@@ -86,22 +88,65 @@ const Dashboard = () => {
               <p className="text-xs sm:text-sm text-muted-foreground hidden sm:block">Mashinalar statistikasi</p>
             </div>
           </div>
-          <Button
-            variant="outline"
-            onClick={handleLogout}
-            size="sm"
-            className="gap-1 sm:gap-2 border-border/50 hover:border-destructive hover:text-destructive transition-colors text-xs sm:text-sm h-8 sm:h-9 px-2 sm:px-3"
-          >
-            <LogOut className="w-3 h-3 sm:w-4 sm:h-4" />
-            <span className="hidden sm:inline">Chiqish</span>
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleRefresh}
+              disabled={isRefreshing}
+              className="gap-1 sm:gap-2 border-border/50 hover:border-primary transition-colors text-xs sm:text-sm h-8 sm:h-9 px-2 sm:px-3"
+            >
+              <RefreshCw className={`w-3 h-3 sm:w-4 sm:h-4 ${isRefreshing ? "animate-spin" : ""}`} />
+              <span className="hidden md:inline">Yangilash</span>
+            </Button>
+            <Button
+              variant="outline"
+              onClick={handleLogout}
+              size="sm"
+              className="gap-1 sm:gap-2 border-border/50 hover:border-destructive hover:text-destructive transition-colors text-xs sm:text-sm h-8 sm:h-9 px-2 sm:px-3"
+            >
+              <LogOut className="w-3 h-3 sm:w-4 sm:h-4" />
+              <span className="hidden sm:inline">Chiqish</span>
+            </Button>
+          </div>
         </div>
       </header>
 
       {/* Main Content - Responsive padding */}
       <main className="container mx-auto px-3 sm:px-4 lg:px-6 py-4 sm:py-6 lg:py-8">
-        {/* Stats Cards - Responsive grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-6 lg:mb-8">
+        {isLoading ? (
+          <>
+            {/* Loading Skeletons */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-6 lg:mb-8">
+              {[1, 2, 3].map((i) => (
+                <Card key={i} className="border-border/50">
+                  <CardHeader className="pb-2 sm:pb-3 p-3 sm:p-4 lg:p-6">
+                    <Skeleton className="h-4 w-32" />
+                  </CardHeader>
+                  <CardContent className="p-3 sm:p-4 lg:p-6">
+                    <Skeleton className="h-10 w-24 mb-2" />
+                    <Skeleton className="h-4 w-36" />
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
+              {[1, 2].map((i) => (
+                <Card key={i} className="border-border/50">
+                  <CardHeader className="p-3 sm:p-4 lg:p-6">
+                    <Skeleton className="h-6 w-48" />
+                  </CardHeader>
+                  <CardContent className="p-2 sm:p-4 lg:p-6">
+                    <Skeleton className="h-64 w-full" />
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </>
+        ) : stats ? (
+          <>
+            {/* Stats Cards - Responsive grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-6 lg:mb-8">
           <Card className="overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-hover)] transition-all duration-300 active:scale-[0.98] border-border/50">
             <CardHeader className="pb-2 sm:pb-3 bg-gradient-to-br from-primary/10 to-primary/5 p-3 sm:p-4 lg:p-6">
               <div className="flex items-center justify-between">
@@ -113,7 +158,7 @@ const Dashboard = () => {
             </CardHeader>
             <CardContent className="pt-3 sm:pt-4 lg:pt-6 p-3 sm:p-4 lg:p-6">
               <div className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-                {todayCars}
+                {stats.today}
               </div>
               <p className="text-xs sm:text-sm text-muted-foreground mt-1 sm:mt-2 flex items-center gap-1">
                 <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-accent flex-shrink-0" />
@@ -133,7 +178,7 @@ const Dashboard = () => {
             </CardHeader>
             <CardContent className="pt-3 sm:pt-4 lg:pt-6 p-3 sm:p-4 lg:p-6">
               <div className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-accent to-accent/80 bg-clip-text text-transparent">
-                {weeklyCars}
+                {stats.weekly}
               </div>
               <p className="text-xs sm:text-sm text-muted-foreground mt-1 sm:mt-2 flex items-center gap-1">
                 <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-accent flex-shrink-0" />
@@ -153,7 +198,7 @@ const Dashboard = () => {
             </CardHeader>
             <CardContent className="pt-3 sm:pt-4 lg:pt-6 p-3 sm:p-4 lg:p-6">
               <div className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-                {monthlyCars}
+                {stats.monthly}
               </div>
               <p className="text-xs sm:text-sm text-muted-foreground mt-1 sm:mt-2 flex items-center gap-1">
                 <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-accent flex-shrink-0" />
@@ -176,7 +221,7 @@ const Dashboard = () => {
             </CardHeader>
             <CardContent className="p-2 sm:p-4 lg:p-6">
               <ResponsiveContainer width="100%" height={250} className="sm:h-[280px] lg:h-[300px]">
-                <LineChart data={weeklyData}>
+                <LineChart data={stats.weekly_data}>
                   <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                   <XAxis 
                     dataKey="name" 
@@ -224,7 +269,7 @@ const Dashboard = () => {
             </CardHeader>
             <CardContent className="p-2 sm:p-4 lg:p-6">
               <ResponsiveContainer width="100%" height={250} className="sm:h-[280px] lg:h-[300px]">
-                <BarChart data={monthlyData}>
+                <BarChart data={stats.monthly_data}>
                   <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                   <XAxis 
                     dataKey="name" 
@@ -258,6 +303,18 @@ const Dashboard = () => {
             </CardContent>
           </Card>
         </div>
+          </>
+        ) : (
+          <div className="flex items-center justify-center min-h-[400px]">
+            <Card className="p-6 text-center">
+              <AlertCircle className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+              <p className="text-muted-foreground mb-4">Ma'lumotlar yuklanmadi</p>
+              <Button onClick={handleRefresh} variant="outline">
+                Qayta urinish
+              </Button>
+            </Card>
+          </div>
+        )}
       </main>
     </div>
   );

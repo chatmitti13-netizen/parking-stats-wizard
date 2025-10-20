@@ -5,29 +5,45 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
-import { Lock, User } from "lucide-react";
+import { Lock, User, AlertCircle } from "lucide-react";
+import { apiService } from "@/lib/api";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const Login = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    setError("");
 
-    // Simulate login delay
-    setTimeout(() => {
-      if (login === "admin" && password === "admin123") {
-        localStorage.setItem("isAuthenticated", "true");
-        toast.success("Tizimga muvaffaqiyatli kirdingiz!");
-        navigate("/dashboard");
-      } else {
-        toast.error("Login yoki parol noto'g'ri!");
+    try {
+      const response = await apiService.login({
+        username: login,
+        password: password,
+      });
+
+      // Save token and authentication state
+      localStorage.setItem("access_token", response.access_token);
+      localStorage.setItem("isAuthenticated", "true");
+      
+      if (response.user?.username) {
+        localStorage.setItem("username", response.user.username);
       }
+
+      toast.success("Tizimga muvaffaqiyatli kirdingiz!");
+      navigate("/dashboard");
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : "Login muvaffaqiyatsiz";
+      setError(errorMessage);
+      toast.error(errorMessage);
+    } finally {
       setIsLoading(false);
-    }, 500);
+    }
   };
 
   return (
@@ -45,6 +61,12 @@ const Login = () => {
           </CardDescription>
         </CardHeader>
         <CardContent className="p-4 sm:p-6">
+          {error && (
+            <Alert variant="destructive" className="mb-4">
+              <AlertCircle className="h-4 w-4" />
+              <AlertDescription>{error}</AlertDescription>
+            </Alert>
+          )}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="login" className="text-xs sm:text-sm font-medium">
