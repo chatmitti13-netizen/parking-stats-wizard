@@ -31,58 +31,58 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 via-background to-accent/10 p-4">
-      <Card className="w-full max-w-md shadow-[var(--shadow-card)] border-border/50">
-        <CardHeader className="space-y-2 text-center">
-          <div className="mx-auto w-16 h-16 bg-gradient-to-br from-primary to-primary-glow rounded-2xl flex items-center justify-center mb-2 shadow-lg">
-            <Lock className="w-8 h-8 text-primary-foreground" />
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 via-background to-accent/10 p-3 sm:p-4 lg:p-6">
+      <Card className="w-full max-w-md shadow-[var(--shadow-card)] border-border/50 mx-auto">
+        <CardHeader className="space-y-2 text-center p-4 sm:p-6">
+          <div className="mx-auto w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-primary to-primary-glow rounded-xl sm:rounded-2xl flex items-center justify-center mb-2 shadow-lg">
+            <Lock className="w-6 h-6 sm:w-8 sm:h-8 text-primary-foreground" />
           </div>
-          <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
+          <CardTitle className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
             Parking Tizimi
           </CardTitle>
-          <CardDescription className="text-base">
+          <CardDescription className="text-sm sm:text-base">
             Tizimga kirish uchun ma'lumotlaringizni kiriting
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-4 sm:p-6">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="login" className="text-sm font-medium">
+              <Label htmlFor="login" className="text-xs sm:text-sm font-medium">
                 Login
               </Label>
               <div className="relative">
-                <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <User className="absolute left-3 top-1/2 -translate-y-1/2 w-3 h-3 sm:w-4 sm:h-4 text-muted-foreground" />
                 <Input
                   id="login"
                   type="text"
                   placeholder="admin"
                   value={login}
                   onChange={(e) => setLogin(e.target.value)}
-                  className="pl-10 h-11 border-border/50 focus:border-primary transition-colors"
+                  className="pl-9 sm:pl-10 h-10 sm:h-11 border-border/50 focus:border-primary transition-colors text-sm sm:text-base"
                   required
                 />
               </div>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-sm font-medium">
+              <Label htmlFor="password" className="text-xs sm:text-sm font-medium">
                 Parol
               </Label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-3 h-3 sm:w-4 sm:h-4 text-muted-foreground" />
                 <Input
                   id="password"
                   type="password"
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="pl-10 h-11 border-border/50 focus:border-primary transition-colors"
+                  className="pl-9 sm:pl-10 h-10 sm:h-11 border-border/50 focus:border-primary transition-colors text-sm sm:text-base"
                   required
                 />
               </div>
             </div>
             <Button
               type="submit"
-              className="w-full h-11 bg-gradient-to-r from-primary to-primary-glow hover:opacity-90 transition-opacity font-semibold shadow-md"
+              className="w-full h-10 sm:h-11 bg-gradient-to-r from-primary to-primary-glow hover:opacity-90 active:scale-[0.98] transition-all font-semibold shadow-md text-sm sm:text-base"
               disabled={isLoading}
             >
               {isLoading ? "Kirish..." : "Kirish"}
