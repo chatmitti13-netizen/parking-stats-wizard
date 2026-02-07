@@ -1,0 +1,58 @@
+[
+  {
+    "id": "SUB-1204",
+    "mahalla": "Yangiobod",
+    "officer": "Said Akhmedov",
+    "period": "Avgust 2024",
+    "status": "Ko'rib chiqilmoqda",
+    "population": 12450,
+    "crimes": 34,
+    "preventive": 18,
+    "migrationIn": 12,
+    "migrationOut": 8,
+    "cameras": 42,
+    "documents": ["incident-report-aug.pdf", "patrol-plan.xlsx"],
+    "submittedAt": "2024-09-02",
+    "history": [
+      { "date": "2024-09-02", "event": "Ko'rib chiqish uchun yuborildi" }
+    ]
+  },
+  {
+    "id": "SUB-1201",
+    "mahalla": "Navbahor",
+    "officer": "Jamshid Qosimov",
+    "period": "Avgust 2024",
+    "status": "Tasdiqlangan",
+    "population": 11200,
+    "crimes": 26,
+    "preventive": 14,
+    "migrationIn": 9,
+    "migrationOut": 6,
+    "cameras": 38,
+    "documents": ["community-audit.pdf"],
+    "submittedAt": "2024-09-01",
+    "history": [
+      { "date": "2024-09-01", "event": "Ko'rib chiqish uchun yuborildi" },
+      { "date": "2024-09-03", "event": "Administrator tomonidan tasdiqlandi" }
+    ]
+  },
+  {
+    "id": "SUB-1198",
+    "mahalla": "Gulzor",
+    "officer": "Dilfuza Karimova",
+    "period": "Avgust 2024",
+    "status": "Rad etilgan",
+    "population": 9800,
+    "crimes": 19,
+    "preventive": 11,
+    "migrationIn": 6,
+    "migrationOut": 7,
+    "cameras": 31,
+    "documents": ["monthly-summary.pdf"],
+    "submittedAt": "2024-08-30",
+    "history": [
+      { "date": "2024-08-30", "event": "Ko'rib chiqish uchun yuborildi" },
+      { "date": "2024-09-01", "event": "Rad etildi: ilova yetishmaydi" }
+    ]
+  }
+]

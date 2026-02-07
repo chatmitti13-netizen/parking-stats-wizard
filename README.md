@@ -1,73 +1,96 @@
-# Welcome to your Lovable project
+# Baxmal District Statistics Platform
 
-## Project info
+Frontend-only React 18 + Vite application for the Baxmal district administration. The platform delivers a government-style analytics dashboard with district mapping, mahalla administration, officer workflows, and AI/alert insights using **mocked JSON data only**.
 
-**URL**: https://lovable.dev/projects/e3ac4e81-1770-445b-b6be-1820b112d690
+## ✨ Key Features (Phase 4)
 
-## How can I edit this code?
+- **Government-style dashboard** with KPI cards, charts, and submission summaries.
+- **District map (Mapbox GL JS)** with mahalla polygons, hover states, and side panel insights.
+- **Mahalla management UI** with Mapbox Draw polygon editing and area calculation.
+- **Officer management UI** with CRUD modals and role/status filters.
+- **Approval workflow** for officer submissions with review timeline.
+- **Reports builder** with export button placeholders.
+- **AI analytics** mock dashboards (radar, forecast, heatmap grid).
+- **Alerts center** with severity badges and detail drawer.
+- **Light/Dark theme toggle** persisted in localStorage.
 
-There are several ways of editing your application.
+## 🧱 Tech Stack
 
-**Use Lovable**
+- React 18 + Vite
+- Tailwind CSS
+- React Router
+- Zustand
+- Mapbox GL JS + Mapbox Draw
+- Chart.js (react-chartjs-2)
+- Lucide React icons
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/e3ac4e81-1770-445b-b6be-1820b112d690) and start prompting.
+## 📁 Folder Structure
 
-Changes made via Lovable will be committed automatically to this repo.
+```
+/src
+  /components
+    Sidebar.tsx
+    Header.tsx
+    Layout.tsx
+    Card.tsx
+    Button.tsx
+    Table.tsx
+    Modal.tsx
+    Badge.tsx
+  /data
+    district.json
+    mahallas_geo.json
+    statistics_monthly.json
+    officers.json
+    mahallas.json
+    submissions.json
+    boundary_versions.json
+    reports.json
+    ai_predictions.json
+    alerts.json
+    heatmap_points.json
+  /pages
+    Dashboard.tsx
+    DistrictMap.tsx
+    Mahallas.tsx
+    Officers.tsx
+    Statistics.tsx
+    Reports.tsx
+    AiAnalytics.tsx
+    Alerts.tsx
+    Settings.tsx
+    Submissions.tsx
+    SubmissionReview.tsx
+    OfficerPanel.tsx
+  /routes
+    AppRoutes.tsx
+  /services
+    mockApi.ts
+  /store
+    UiContext.tsx
+```
 
-**Use your preferred IDE**
+## 🔧 Setup
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## 🌍 Mapbox
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Mapbox GL JS and Mapbox Draw are loaded lazily from CDN scripts via `mapboxLoader.ts` to avoid blocked registry installs. The access token is loaded from `.env`:
 
-**Use GitHub Codespaces**
+```
+VITE_MAPBOX_TOKEN=pk.eyJ1IjoiaHVtb3l1bjEzMTIiLCJhIjoiY21hYmIwMzBuMjRmbDJtczh2cDFsZmNobSJ9.isj-iGJnRKTpVraIoy2bKQ
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## ✅ Notes
 
-## What technologies are used for this project?
+- **Frontend-only**: No backend services or APIs.
+- **Mock data** is stored in `/src/data` and accessed via `mockApi.ts`.
+- **Export actions** (PDF/Excel) are UI-only placeholders.
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/e3ac4e81-1770-445b-b6be-1820b112d690) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Maintained for Baxmal district administration digital transformation initiatives.
