@@ -1,0 +1,42 @@
+[
+  {
+    "id": "OFF-001",
+    "name": "Said",
+    "surname": "Akhmedov",
+    "phone": "+998 90 112 34 56",
+    "username": "s.akhmedov",
+    "role": "Inspektor",
+    "assignedMahalla": "Yangiobod",
+    "status": "Faol"
+  },
+  {
+    "id": "OFF-002",
+    "name": "Dilfuza",
+    "surname": "Karimova",
+    "phone": "+998 90 221 45 67",
+    "username": "d.karimova",
+    "role": "Inspektor",
+    "assignedMahalla": "Gulzor",
+    "status": "Faol"
+  },
+  {
+    "id": "OFF-003",
+    "name": "Jamshid",
+    "surname": "Qosimov",
+    "phone": "+998 90 332 56 78",
+    "username": "j.qosimov",
+    "role": "Analitik",
+    "assignedMahalla": "Navbahor",
+    "status": "Faol"
+  },
+  {
+    "id": "OFF-004",
+    "name": "Otabek",
+    "surname": "Musaev",
+    "phone": "+998 90 443 67 89",
+    "username": "o.musaev",
+    "role": "Administrator",
+    "assignedMahalla": "Bunyodkor",
+    "status": "O'chirilgan"
+  }
+]
