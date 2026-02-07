@@ -1,0 +1,50 @@
+[
+  {
+    "id": "MH-001",
+    "name": "Yangiobod",
+    "code": "MFY-1001",
+    "population": 12450,
+    "area": 2.6,
+    "assignedOfficer": "Said Akhmedov",
+    "status": "Faol",
+    "logo": "",
+    "phone": "+998 90 112 34 56",
+    "description": "Markaziy mahalla, savdo va turar joy hududlari aralash joylashgan."
+  },
+  {
+    "id": "MH-002",
+    "name": "Gulzor",
+    "code": "MFY-1002",
+    "population": 9800,
+    "area": 2.1,
+    "assignedOfficer": "Dilfuza Karimova",
+    "status": "Faol",
+    "logo": "",
+    "phone": "+998 90 221 45 67",
+    "description": "Yangi uy-joylar rivojlanayotgan mahalla."
+  },
+  {
+    "id": "MH-003",
+    "name": "Navbahor",
+    "code": "MFY-1003",
+    "population": 11200,
+    "area": 2.4,
+    "assignedOfficer": "Jamshid Qosimov",
+    "status": "Faol emas",
+    "logo": "",
+    "phone": "+998 90 332 56 78",
+    "description": "Qishloq xo'jaligiga ixtisoslashgan, mavsumiy migratsiya kuzatiladi."
+  },
+  {
+    "id": "MH-004",
+    "name": "Bunyodkor",
+    "code": "MFY-1004",
+    "population": 8600,
+    "area": 1.9,
+    "assignedOfficer": "Otabek Musaev",
+    "status": "Faol",
+    "logo": "",
+    "phone": "+998 90 443 67 89",
+    "description": "Sanoat va logistika hududlari joylashgan mahalla."
+  }
+]
