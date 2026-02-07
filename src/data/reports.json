@@ -1,0 +1,18 @@
+[
+  {
+    "id": "REP-889",
+    "scope": "Tuman",
+    "range": "2024 2-chorak",
+    "metrics": ["Jinoyatlar", "Aholi", "Kameralar"],
+    "createdAt": "2024-07-05",
+    "status": "Tayyorlangan"
+  },
+  {
+    "id": "REP-901",
+    "scope": "Mahalla: Yangiobod",
+    "range": "Avgust 2024",
+    "metrics": ["Jinoyatlar", "Profilaktika"],
+    "createdAt": "2024-09-02",
+    "status": "Tayyorlangan"
+  }
+]

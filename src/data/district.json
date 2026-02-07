@@ -1,0 +1,24 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Baxmal tumani chegarasi"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [68.58, 40.78],
+            [68.86, 40.8],
+            [68.95, 40.65],
+            [68.7, 40.57],
+            [68.52, 40.62],
+            [68.58, 40.78]
+          ]
+        ]
+      }
+    }
+  ]
+}
