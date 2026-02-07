@@ -18,7 +18,7 @@ const DistrictMap = () => {
 
   const chartData = useMemo(() => {
     if (!selectedMahalla) return null;
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const months = ["Yan", "Fev", "Mar", "Apr", "May", "Iyn", "Iyl", "Avg", "Sen", "Okt", "Noy", "Dek"];
     const values = [12, 14, 18, 16, 20, 22, 21, 24, 27, 23, 19, 18];
     return months.map((month, index) => ({ month, incidents: values[index] }));
   }, [selectedMahalla]);
@@ -241,11 +241,11 @@ const DistrictMap = () => {
     <div className="grid gap-6 xl:grid-cols-[1fr_360px]">
       <div className="space-y-4">
         <div className="flex flex-wrap items-center gap-3">
-          <h2 className="text-2xl font-semibold">District Map</h2>
+          <h2 className="text-2xl font-semibold">Tuman xaritasi</h2>
           <Badge variant="outline">Mapbox GL</Badge>
         </div>
         <p className="text-muted-foreground">
-          Interactive district map with mahalla boundaries, risk levels, and infrastructure layers.
+          Mahalla chegaralari, xavf darajalari va infratuzilma qatlamlari bilan interaktiv tuman xaritasi.
         </p>
         <div className="flex flex-wrap gap-3">
           {(["heatmap", "migration", "cameras"] as const).map((layer) => (
@@ -257,9 +257,9 @@ const DistrictMap = () => {
                 layers[layer] ? "bg-primary text-white border-primary" : "border-border text-muted-foreground"
               }`}
             >
-              {layer === "heatmap" && "Crime Heatmap"}
-              {layer === "migration" && "Migration Density"}
-              {layer === "cameras" && "Camera Coverage"}
+              {layer === "heatmap" && "Jinoyat issiq xaritasi"}
+              {layer === "migration" && "Migratsiya zichligi"}
+              {layer === "cameras" && "Kamera qamrovi"}
             </button>
           ))}
         </div>
@@ -268,25 +268,25 @@ const DistrictMap = () => {
             <div ref={mapContainer} className="absolute inset-0" />
           ) : (
             <div className="absolute inset-0 flex items-center justify-center bg-muted/30 text-sm text-muted-foreground">
-              Mapbox scripts failed to load. Check network access for the CDN.
+              Mapbox skriptlari yuklanmadi. CDN uchun tarmoq ruxsatini tekshiring.
             </div>
           )}
           {mapLoading && mapReady && (
             <div className="absolute inset-0 flex items-center justify-center bg-muted/20 text-sm text-muted-foreground">
-              Loading map layers...
+              Xarita qatlamlari yuklanmoqda...
             </div>
           )}
           <div className="absolute bottom-4 left-4 rounded-xl bg-card/90 backdrop-blur border border-border px-4 py-3 text-xs shadow">
-            <p className="font-semibold text-foreground mb-1">Legend</p>
+            <p className="font-semibold text-foreground mb-1">Izoh</p>
             <div className="space-y-1 text-muted-foreground">
               <div className="flex items-center gap-2">
-                <span className="h-2 w-6 rounded-full bg-[#93C5FD]" /> Low risk
+                <span className="h-2 w-6 rounded-full bg-[#93C5FD]" /> Past xavf
               </div>
               <div className="flex items-center gap-2">
-                <span className="h-2 w-6 rounded-full bg-[#3B82F6]" /> Medium risk
+                <span className="h-2 w-6 rounded-full bg-[#3B82F6]" /> O'rta xavf
               </div>
               <div className="flex items-center gap-2">
-                <span className="h-2 w-6 rounded-full bg-[#1E3A8A]" /> High risk
+                <span className="h-2 w-6 rounded-full bg-[#1E3A8A]" /> Yuqori xavf
               </div>
             </div>
           </div>
@@ -294,7 +294,7 @@ const DistrictMap = () => {
       </div>
       <Card className="border-border/60 shadow-[var(--shadow-card)]">
         <CardHeader>
-          <CardTitle>Mahalla Insights</CardTitle>
+          <CardTitle>Mahalla bo'yicha ma'lumotlar</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           {selectedMahalla ? (
@@ -302,20 +302,20 @@ const DistrictMap = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-lg font-semibold">{selectedMahalla.name}</h3>
-                  <p className="text-sm text-muted-foreground">Profilaktika officer: {selectedMahalla.officer}</p>
+                  <p className="text-sm text-muted-foreground">Profilaktika inspektori: {selectedMahalla.officer}</p>
                 </div>
-                <Badge>{Math.round(selectedMahalla.crimeLevel * 100)} risk</Badge>
+                <Badge>{Math.round(selectedMahalla.crimeLevel * 100)} xavf</Badge>
               </div>
               <div className="grid gap-3 md:grid-cols-2">
                 <Card className="border-border/60">
                   <CardHeader>
-                    <CardTitle className="text-sm">Population</CardTitle>
+                    <CardTitle className="text-sm">Aholi soni</CardTitle>
                   </CardHeader>
                   <CardContent className="text-xl font-semibold">{selectedMahalla.population}</CardContent>
                 </Card>
                 <Card className="border-border/60">
                   <CardHeader>
-                    <CardTitle className="text-sm">Monthly Cases</CardTitle>
+                    <CardTitle className="text-sm">Oylik holatlar</CardTitle>
                   </CardHeader>
                   <CardContent className="text-xl font-semibold">{Math.round(selectedMahalla.crimeLevel * 45)}</CardContent>
                 </Card>
@@ -333,12 +333,12 @@ const DistrictMap = () => {
                   </ResponsiveContainer>
                 )}
               </div>
-              <Button className="w-full">Open Mahalla Detail</Button>
+              <Button className="w-full">Mahalla tafsilotlari</Button>
             </>
           ) : (
             <div className="text-center text-sm text-muted-foreground py-12">
               <MapPin className="h-10 w-10 mx-auto mb-3 text-muted-foreground" />
-              Click a mahalla polygon to see insights.
+              Ma'lumotlarni ko'rish uchun mahalla poligonini bosing.
             </div>
           )}
         </CardContent>

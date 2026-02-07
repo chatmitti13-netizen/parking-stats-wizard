@@ -6,9 +6,9 @@
     "population": 12450,
     "area": 2.6,
     "assignedOfficer": "Said Akhmedov",
-    "status": "Active",
+    "status": "Faol",
     "phone": "+998 90 112 34 56",
-    "description": "Central mahalla with mixed residential and market zones."
+    "description": "Markaziy mahalla, savdo va turar joy hududlari aralash joylashgan."
   },
   {
     "id": "MH-002",
@@ -17,9 +17,9 @@
     "population": 9800,
     "area": 2.1,
     "assignedOfficer": "Dilfuza Karimova",
-    "status": "Active",
+    "status": "Faol",
     "phone": "+998 90 221 45 67",
-    "description": "Growing mahalla with new housing developments."
+    "description": "Yangi uy-joylar rivojlanayotgan mahalla."
   },
   {
     "id": "MH-003",
@@ -28,9 +28,9 @@
     "population": 11200,
     "area": 2.4,
     "assignedOfficer": "Jamshid Qosimov",
-    "status": "Inactive",
+    "status": "Faol emas",
     "phone": "+998 90 332 56 78",
-    "description": "Agricultural mahalla with seasonal migration."
+    "description": "Qishloq xo'jaligiga ixtisoslashgan, mavsumiy migratsiya kuzatiladi."
   },
   {
     "id": "MH-004",
@@ -39,8 +39,8 @@
     "population": 8600,
     "area": 1.9,
     "assignedOfficer": "Otabek Musaev",
-    "status": "Active",
+    "status": "Faol",
     "phone": "+998 90 443 67 89",
-    "description": "Industrial corridor with logistics facilities."
+    "description": "Sanoat va logistika hududlari joylashgan mahalla."
   }
 ]

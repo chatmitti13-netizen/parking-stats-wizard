@@ -43,14 +43,14 @@ const AiAnalytics = () => {
   return (
     <div className="space-y-6">
       <section>
-        <h2 className="text-2xl font-semibold">AI Analytics</h2>
-        <p className="text-muted-foreground">Mock AI insights with risk scoring and predictive analysis.</p>
+        <h2 className="text-2xl font-semibold">AI tahlil</h2>
+        <p className="text-muted-foreground">Xavf bahosi va prognoz tahlillari bo'yicha AI ko'rinishlari.</p>
       </section>
 
       <div className="grid gap-6 lg:grid-cols-2">
         <Card className="border-border/60">
           <CardHeader>
-            <CardTitle>Risk Index per Mahalla</CardTitle>
+            <CardTitle>Mahalla bo'yicha xavf indeksi</CardTitle>
           </CardHeader>
           <CardContent className="h-[320px]">
             {radarData && (
@@ -68,7 +68,7 @@ const AiAnalytics = () => {
         </Card>
         <Card className="border-border/60">
           <CardHeader>
-            <CardTitle>Crime Prediction Trend</CardTitle>
+            <CardTitle>Jinoyat prognozi trendi</CardTitle>
           </CardHeader>
           <CardContent className="h-[320px]">
             {forecastData && (
@@ -89,7 +89,7 @@ const AiAnalytics = () => {
       <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
         <Card className="border-border/60">
           <CardHeader>
-            <CardTitle>Heatmap Grid</CardTitle>
+            <CardTitle>Issiq xarita tarmog'i</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-5 gap-2">
@@ -101,18 +101,18 @@ const AiAnalytics = () => {
                 />
               ))}
             </div>
-            <p className="text-xs text-muted-foreground mt-3">Darker cells indicate higher predicted risk.</p>
+            <p className="text-xs text-muted-foreground mt-3">To'qroq kataklar yuqoriroq prognoz xavfini bildiradi.</p>
           </CardContent>
         </Card>
         <Card className="border-border/60">
           <CardHeader>
-            <CardTitle>Top 5 Emerging Risk Areas</CardTitle>
+            <CardTitle>Top 5 xavfli hududlar</CardTitle>
           </CardHeader>
           <CardContent className="space-y-2">
             {data?.emerging.map((item: any) => (
               <div key={item.name} className="flex items-center justify-between rounded-lg border border-border px-3 py-2 text-sm">
                 <span>{item.name}</span>
-                <Badge variant={item.risk === "High" ? "destructive" : item.risk === "Medium" ? "secondary" : "outline"}>
+                <Badge variant={item.risk === "Yuqori" ? "destructive" : item.risk === "O'rta" ? "secondary" : "outline"}>
                   {item.risk}
                 </Badge>
               </div>
@@ -123,7 +123,7 @@ const AiAnalytics = () => {
 
       <Card className="border-border/60">
         <CardHeader>
-          <CardTitle>Recommendations</CardTitle>
+          <CardTitle>Tavsiyalar</CardTitle>
         </CardHeader>
         <CardContent className="grid gap-3 md:grid-cols-3">
           {data?.recommendations.map((recommendation: string) => (

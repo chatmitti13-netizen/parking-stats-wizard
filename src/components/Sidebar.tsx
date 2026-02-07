@@ -17,16 +17,16 @@ import { useUi } from "@/store/UiContext";
 import { toast } from "sonner";
 
 const navItems = [
-  { label: "Dashboard", to: "/dashboard", icon: LayoutDashboard },
-  { label: "District Map", to: "/district-map", icon: Map },
-  { label: "Mahallas", to: "/mahallas", icon: Users },
-  { label: "Officers", to: "/officers", icon: ShieldCheck },
-  { label: "Statistics", to: "/statistics", icon: BarChart3 },
-  { label: "Reports", to: "/reports", icon: FileText },
-  { label: "AI Analytics", to: "/ai-analytics", icon: Brain },
-  { label: "Submissions", to: "/submissions", icon: ClipboardList },
-  { label: "Alerts", to: "/alerts", icon: Bell },
-  { label: "Settings", to: "/settings", icon: Settings },
+  { label: "Boshqaruv paneli", to: "/dashboard", icon: LayoutDashboard },
+  { label: "Tuman xaritasi", to: "/district-map", icon: Map },
+  { label: "Mahallalar", to: "/mahallas", icon: Users },
+  { label: "Xodimlar", to: "/officers", icon: ShieldCheck },
+  { label: "Statistika", to: "/statistics", icon: BarChart3 },
+  { label: "Hisobotlar", to: "/reports", icon: FileText },
+  { label: "AI tahlil", to: "/ai-analytics", icon: Brain },
+  { label: "Topshiriqlar", to: "/submissions", icon: ClipboardList },
+  { label: "Ogohlantirishlar", to: "/alerts", icon: Bell },
+  { label: "Sozlamalar", to: "/settings", icon: Settings },
 ];
 
 const Sidebar = () => {
@@ -34,7 +34,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    toast.success("Logged out (mock)");
+    toast.success("Tizimdan chiqildi (mock)");
     navigate("/dashboard");
   };
 
@@ -53,7 +53,7 @@ const Sidebar = () => {
           {sidebarOpen && (
             <div>
               <p className="text-sm uppercase tracking-[0.2em] text-sidebar-foreground/60">Baxmal</p>
-              <h2 className="text-lg font-semibold">Statistics Platform</h2>
+              <h2 className="text-lg font-semibold">Statistika platformasi</h2>
             </div>
           )}
         </div>
@@ -87,7 +87,7 @@ const Sidebar = () => {
           className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-sidebar-foreground/80 hover:text-sidebar-foreground hover:bg-sidebar-accent/60 transition w-full"
         >
           <LogOut className="h-5 w-5" />
-          {sidebarOpen && <span>Logout</span>}
+          {sidebarOpen && <span>Chiqish</span>}
         </button>
       </div>
     </aside>

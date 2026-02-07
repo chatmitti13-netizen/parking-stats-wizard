@@ -1,5 +1,5 @@
 {
-  "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+  "months": ["Yan", "Fev", "Mar", "Apr", "May", "Iyn", "Iyl", "Avg", "Sen", "Okt", "Noy", "Dek"],
   "crimeTotals": [142, 128, 151, 164, 172, 158, 149, 176, 190, 178, 166, 181],
   "preventiveCases": [82, 76, 88, 94, 102, 91, 89, 96, 110, 104, 97, 105],
   "migration": [14, 18, 12, 16, 22, 20, 15, 19, 24, 21, 18, 23],
@@ -17,22 +17,22 @@
       "id": "SUB-1204",
       "mahalla": "Yangiobod",
       "officer": "Said Akhmedov",
-      "period": "Aug 2024",
-      "status": "Pending"
+      "period": "Avgust 2024",
+      "status": "Ko'rib chiqilmoqda"
     },
     {
       "id": "SUB-1201",
       "mahalla": "Navbahor",
       "officer": "Jamshid Qosimov",
-      "period": "Aug 2024",
-      "status": "Approved"
+      "period": "Avgust 2024",
+      "status": "Tasdiqlangan"
     },
     {
       "id": "SUB-1198",
       "mahalla": "Gulzor",
       "officer": "Dilfuza Karimova",
-      "period": "Aug 2024",
-      "status": "Draft"
+      "period": "Avgust 2024",
+      "status": "Qoralama"
     }
   ]
 }

@@ -1,18 +1,18 @@
 [
   {
     "id": "REP-889",
-    "scope": "District",
-    "range": "Q2 2024",
-    "metrics": ["Crimes", "Population", "Cameras"],
+    "scope": "Tuman",
+    "range": "2024 2-chorak",
+    "metrics": ["Jinoyatlar", "Aholi", "Kameralar"],
     "createdAt": "2024-07-05",
-    "status": "Generated"
+    "status": "Tayyorlangan"
   },
   {
     "id": "REP-901",
     "scope": "Mahalla: Yangiobod",
-    "range": "Aug 2024",
-    "metrics": ["Crimes", "Preventive"],
+    "range": "Avgust 2024",
+    "metrics": ["Jinoyatlar", "Profilaktika"],
     "createdAt": "2024-09-02",
-    "status": "Generated"
+    "status": "Tayyorlangan"
   }
 ]

@@ -36,20 +36,20 @@ const Dashboard = () => {
 
   const kpis = dashboardData
     ? [
-        { label: "Total Crimes", value: dashboardData.crimeTotals.at(-1), icon: ShieldAlert },
-        { label: "Preventive Cases", value: dashboardData.preventiveCases.at(-1), icon: TrendingUp },
-        { label: "Population", value: dashboardData.population.toLocaleString(), icon: Users },
-        { label: "Migration Balance", value: "+" + dashboardData.migration.at(-1), icon: ChartLine },
-        { label: "Cameras", value: dashboardData.cameras, icon: Camera },
+        { label: "Jami jinoyatlar", value: dashboardData.crimeTotals.at(-1), icon: ShieldAlert },
+        { label: "Profilaktika ishlari", value: dashboardData.preventiveCases.at(-1), icon: TrendingUp },
+        { label: "Aholi soni", value: dashboardData.population.toLocaleString(), icon: Users },
+        { label: "Migratsiya balansi", value: "+" + dashboardData.migration.at(-1), icon: ChartLine },
+        { label: "Kameralar", value: dashboardData.cameras, icon: Camera },
       ]
     : [];
 
   return (
     <div className="space-y-8">
       <section className="space-y-2">
-        <h2 className="text-2xl font-semibold">District Overview</h2>
+        <h2 className="text-2xl font-semibold">Tuman bo'yicha umumiy ko'rinish</h2>
         <p className="text-muted-foreground">
-          Real-time KPI tracking and monthly analytics for Baxmal district safety and population management.
+          Baxmal tumani xavfsizligi va aholi boshqaruvi bo'yicha real vaqt KPI va oylik tahlillar.
         </p>
       </section>
 
@@ -77,7 +77,7 @@ const Dashboard = () => {
                   </CardHeader>
                   <CardContent>
                     <p className="text-2xl font-semibold text-foreground">{kpi.value}</p>
-                    <p className="text-xs text-muted-foreground">Updated monthly</p>
+                    <p className="text-xs text-muted-foreground">Oylik yangilanadi</p>
                   </CardContent>
                 </Card>
               );
@@ -87,7 +87,7 @@ const Dashboard = () => {
       <section className="grid gap-6 lg:grid-cols-2">
         <Card className="border-border/60 shadow-[var(--shadow-card)]">
           <CardHeader>
-            <CardTitle>Crimes by Month</CardTitle>
+            <CardTitle>Oylik jinoyatlar</CardTitle>
           </CardHeader>
           <CardContent className="h-[320px]">
             {lineChartData && (
@@ -107,7 +107,7 @@ const Dashboard = () => {
         </Card>
         <Card className="border-border/60 shadow-[var(--shadow-card)]">
           <CardHeader>
-            <CardTitle>Top 5 Risky Mahallas</CardTitle>
+            <CardTitle>Eng xavfli 5 ta mahalla</CardTitle>
           </CardHeader>
           <CardContent className="h-[320px]">
             {barChartData && (
@@ -128,17 +128,17 @@ const Dashboard = () => {
       <section className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
         <Card className="border-border/60 shadow-[var(--shadow-card)]">
           <CardHeader>
-            <CardTitle>Mini Map Preview</CardTitle>
+            <CardTitle>Mini xarita ko'rinishi</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="h-64 rounded-xl border border-dashed border-border bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center text-sm text-muted-foreground">
-              Map overview preview (district boundary & hotspots)
+              Xarita ko'rinishi (tuman chegarasi va xavf nuqtalari)
             </div>
           </CardContent>
         </Card>
         <Card className="border-border/60 shadow-[var(--shadow-card)]">
           <CardHeader>
-            <CardTitle>Latest Submissions</CardTitle>
+            <CardTitle>So'nggi topshiriqlar</CardTitle>
           </CardHeader>
           <CardContent>
             <Table>
@@ -146,8 +146,8 @@ const Dashboard = () => {
                 <TableRow>
                   <TableHead>ID</TableHead>
                   <TableHead>Mahalla</TableHead>
-                  <TableHead>Officer</TableHead>
-                  <TableHead>Status</TableHead>
+                  <TableHead>Xodim</TableHead>
+                  <TableHead>Holat</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -157,7 +157,11 @@ const Dashboard = () => {
                     <TableCell>{item.mahalla}</TableCell>
                     <TableCell>{item.officer}</TableCell>
                     <TableCell>
-                      <Badge variant={item.status === "Approved" ? "default" : item.status === "Pending" ? "secondary" : "outline"}>
+                      <Badge
+                        variant={
+                          item.status === "Tasdiqlangan" ? "default" : item.status === "Ko'rib chiqilmoqda" ? "secondary" : "outline"
+                        }
+                      >
                         {item.status}
                       </Badge>
                     </TableCell>

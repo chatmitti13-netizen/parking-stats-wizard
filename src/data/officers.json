@@ -5,9 +5,9 @@
     "surname": "Akhmedov",
     "phone": "+998 90 112 34 56",
     "username": "s.akhmedov",
-    "role": "Officer",
+    "role": "Inspektor",
     "assignedMahalla": "Yangiobod",
-    "status": "Active"
+    "status": "Faol"
   },
   {
     "id": "OFF-002",
@@ -15,9 +15,9 @@
     "surname": "Karimova",
     "phone": "+998 90 221 45 67",
     "username": "d.karimova",
-    "role": "Officer",
+    "role": "Inspektor",
     "assignedMahalla": "Gulzor",
-    "status": "Active"
+    "status": "Faol"
   },
   {
     "id": "OFF-003",
@@ -25,9 +25,9 @@
     "surname": "Qosimov",
     "phone": "+998 90 332 56 78",
     "username": "j.qosimov",
-    "role": "Analyst",
+    "role": "Analitik",
     "assignedMahalla": "Navbahor",
-    "status": "Active"
+    "status": "Faol"
   },
   {
     "id": "OFF-004",
@@ -35,8 +35,8 @@
     "surname": "Musaev",
     "phone": "+998 90 443 67 89",
     "username": "o.musaev",
-    "role": "Admin",
+    "role": "Administrator",
     "assignedMahalla": "Bunyodkor",
-    "status": "Disabled"
+    "status": "O'chirilgan"
   }
 ]

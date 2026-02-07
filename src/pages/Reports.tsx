@@ -15,41 +15,41 @@ const Reports = () => {
   return (
     <div className="space-y-6">
       <section>
-        <h2 className="text-2xl font-semibold">Reports</h2>
-        <p className="text-muted-foreground">Build reports with selected metrics and export formats.</p>
+        <h2 className="text-2xl font-semibold">Hisobotlar</h2>
+        <p className="text-muted-foreground">Tanlangan ko'rsatkichlar bo'yicha hisobot yarating va eksport qiling.</p>
       </section>
 
       <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
         <Card className="border-border/60">
           <CardHeader>
-            <CardTitle>Report Builder</CardTitle>
+            <CardTitle>Hisobot konstruktori</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid gap-2">
-              <label className="text-sm font-medium">Scope</label>
+              <label className="text-sm font-medium">Qamrov</label>
               <select className="h-10 rounded-lg border border-border bg-background px-3 text-sm">
-                <option>District</option>
+                <option>Tuman</option>
                 <option>Mahalla: Yangiobod</option>
                 <option>Mahalla: Gulzor</option>
               </select>
             </div>
             <div className="grid gap-2">
-              <label className="text-sm font-medium">Date range</label>
+              <label className="text-sm font-medium">Sana oralig'i</label>
               <div className="grid gap-2 md:grid-cols-2">
                 <input type="date" className="h-10 rounded-lg border border-border bg-background px-3 text-sm" />
                 <input type="date" className="h-10 rounded-lg border border-border bg-background px-3 text-sm" />
               </div>
             </div>
             <div className="grid gap-2">
-              <label className="text-sm font-medium">Metrics</label>
+              <label className="text-sm font-medium">Ko'rsatkichlar</label>
               <div className="grid gap-2 md:grid-cols-2 text-sm text-muted-foreground">
                 {[
-                  "Crimes",
-                  "Preventive",
-                  "Population",
-                  "Migration",
-                  "Cameras",
-                  "Risk Score",
+                  "Jinoyatlar",
+                  "Profilaktika",
+                  "Aholi",
+                  "Migratsiya",
+                  "Kameralar",
+                  "Xavf balli",
                 ].map((metric) => (
                   <label key={metric} className="flex items-center gap-2">
                     <input type="checkbox" defaultChecked /> {metric}
@@ -57,21 +57,21 @@ const Reports = () => {
                 ))}
               </div>
             </div>
-            <Button onClick={() => toast.success("Preview generated")}>Generate Preview</Button>
+            <Button onClick={() => toast.success("Ko'rinish yaratildi")}>Ko'rinishni yaratish</Button>
           </CardContent>
         </Card>
 
         <Card className="border-border/60">
           <CardHeader>
-            <CardTitle>Report Preview</CardTitle>
+            <CardTitle>Hisobot ko'rinishi</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="rounded-xl border border-border bg-muted/40 p-4 text-sm text-muted-foreground">
-              Preview summary: District safety performance report with selected KPIs and charts.
+              Qisqa ko'rinish: tuman xavfsizligi bo'yicha KPI va diagrammalar bilan hisobot.
             </div>
             <div className="flex gap-3">
-              <Button variant="outline" onClick={() => toast("PDF export queued")}>Export PDF</Button>
-              <Button variant="outline" onClick={() => toast("Excel export queued")}>Export Excel</Button>
+              <Button variant="outline" onClick={() => toast("PDF eksportga navbatga qo'yildi")}>PDF eksport</Button>
+              <Button variant="outline" onClick={() => toast("Excel eksportga navbatga qo'yildi")}>Excel eksport</Button>
             </div>
           </CardContent>
         </Card>
@@ -79,17 +79,17 @@ const Reports = () => {
 
       <Card className="border-border/60">
         <CardHeader>
-          <CardTitle>Report History</CardTitle>
+          <CardTitle>Hisobotlar tarixi</CardTitle>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
                 <TableHead>ID</TableHead>
-                <TableHead>Scope</TableHead>
-                <TableHead>Range</TableHead>
-                <TableHead>Metrics</TableHead>
-                <TableHead>Status</TableHead>
+                <TableHead>Qamrov</TableHead>
+                <TableHead>Davr</TableHead>
+                <TableHead>Ko'rsatkichlar</TableHead>
+                <TableHead>Holat</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>

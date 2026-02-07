@@ -7,7 +7,7 @@ import { mockApi, Submission } from "@/services/mockApi";
 
 const Submissions = () => {
   const [submissions, setSubmissions] = useState<Submission[]>([]);
-  const [statusFilter, setStatusFilter] = useState("All");
+  const [statusFilter, setStatusFilter] = useState("Barchasi");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,34 +15,34 @@ const Submissions = () => {
   }, []);
 
   const filtered = useMemo(() => {
-    return submissions.filter((item) => statusFilter === "All" || item.status === statusFilter);
+    return submissions.filter((item) => statusFilter === "Barchasi" || item.status === statusFilter);
   }, [submissions, statusFilter]);
 
   const getBadgeVariant = (status: string) => {
-    if (status === "Approved") return "default";
-    if (status === "Pending") return "secondary";
-    if (status === "Rejected") return "destructive";
+    if (status === "Tasdiqlangan") return "default";
+    if (status === "Ko'rib chiqilmoqda") return "secondary";
+    if (status === "Rad etilgan") return "destructive";
     return "outline";
   };
 
   return (
     <div className="space-y-6">
       <section>
-        <h2 className="text-2xl font-semibold">Approval Workflow</h2>
-        <p className="text-muted-foreground">Review monthly submissions from profilaktika officers.</p>
+        <h2 className="text-2xl font-semibold">Tasdiqlash jarayoni</h2>
+        <p className="text-muted-foreground">Profilaktika xodimlarining oylik topshiriqlarini ko'rib chiqing.</p>
       </section>
       <Card className="border-border/60">
         <CardHeader className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-          <CardTitle>Submitted Reports</CardTitle>
+          <CardTitle>Yuborilgan hisobotlar</CardTitle>
           <select
             value={statusFilter}
             onChange={(event) => setStatusFilter(event.target.value)}
             className="h-10 rounded-lg border border-border bg-background px-3 text-sm"
           >
-            <option value="All">All Status</option>
-            <option value="Pending">Pending</option>
-            <option value="Approved">Approved</option>
-            <option value="Rejected">Rejected</option>
+            <option value="Barchasi">Barcha holatlar</option>
+            <option value="Ko'rib chiqilmoqda">Ko'rib chiqilmoqda</option>
+            <option value="Tasdiqlangan">Tasdiqlangan</option>
+            <option value="Rad etilgan">Rad etilgan</option>
           </select>
         </CardHeader>
         <CardContent>
@@ -51,9 +51,9 @@ const Submissions = () => {
               <TableRow>
                 <TableHead>ID</TableHead>
                 <TableHead>Mahalla</TableHead>
-                <TableHead>Officer</TableHead>
-                <TableHead>Period</TableHead>
-                <TableHead>Status</TableHead>
+                <TableHead>Xodim</TableHead>
+                <TableHead>Davr</TableHead>
+                <TableHead>Holat</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>

@@ -21,7 +21,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import stats from "@/data/statistics_monthly.json";
 
 const Statistics = () => {
-  const [period, setPeriod] = useState("Monthly");
+  const [period, setPeriod] = useState("Oylik");
   const [mahalla, setMahalla] = useState("Yangiobod");
   const [compareYear, setCompareYear] = useState(false);
 
@@ -37,10 +37,10 @@ const Statistics = () => {
 
   const pieData = useMemo(
     () => [
-      { name: "Theft", value: 32 },
-      { name: "Violence", value: 18 },
-      { name: "Fraud", value: 22 },
-      { name: "Other", value: 28 },
+      { name: "O'g'irlik", value: 32 },
+      { name: "Zo'ravonlik", value: 18 },
+      { name: "Firibgarlik", value: 22 },
+      { name: "Boshqa", value: 28 },
     ],
     []
   );
@@ -48,19 +48,19 @@ const Statistics = () => {
   return (
     <div className="space-y-6">
       <section>
-        <h2 className="text-2xl font-semibold">Statistics</h2>
-        <p className="text-muted-foreground">Analyze crime, migration, and preventive measures with filters.</p>
+        <h2 className="text-2xl font-semibold">Statistika</h2>
+        <p className="text-muted-foreground">Filtrlar orqali jinoyat, migratsiya va profilaktika ko'rsatkichlarini tahlil qiling.</p>
       </section>
 
       <Tabs defaultValue="mahalla" className="space-y-6">
         <TabsList>
-          <TabsTrigger value="mahalla">By Mahalla</TabsTrigger>
-          <TabsTrigger value="district">Whole District</TabsTrigger>
+          <TabsTrigger value="mahalla">Mahalla bo'yicha</TabsTrigger>
+          <TabsTrigger value="district">Tuman bo'yicha</TabsTrigger>
         </TabsList>
         <TabsContent value="mahalla" className="space-y-6">
           <Card className="border-border/60">
             <CardHeader>
-              <CardTitle>Filters</CardTitle>
+              <CardTitle>Filtrlar</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-wrap items-center gap-4">
               <select value={mahalla} onChange={(event) => setMahalla(event.target.value)} className="h-10 rounded-lg border border-border bg-background px-3 text-sm">
@@ -70,23 +70,23 @@ const Statistics = () => {
                 <option>Bunyodkor</option>
               </select>
               <select value={period} onChange={(event) => setPeriod(event.target.value)} className="h-10 rounded-lg border border-border bg-background px-3 text-sm">
-                <option>Monthly</option>
-                <option>Quarterly</option>
-                <option>Yearly</option>
+                <option>Oylik</option>
+                <option>Choraklik</option>
+                <option>Yillik</option>
               </select>
               <label className="flex items-center gap-2 text-sm text-muted-foreground">
                 <input type="checkbox" checked={compareYear} onChange={() => setCompareYear((prev) => !prev)} />
-                Compare to last year
+                O'tgan yil bilan solishtirish
               </label>
-              <Button variant="outline">Export PDF</Button>
-              <Button variant="outline">Export Excel</Button>
+              <Button variant="outline">PDF eksport</Button>
+              <Button variant="outline">Excel eksport</Button>
             </CardContent>
           </Card>
 
           <div className="grid gap-6 lg:grid-cols-3">
             <Card className="border-border/60 lg:col-span-2">
               <CardHeader>
-                <CardTitle>{mahalla} - {period} Trend</CardTitle>
+                <CardTitle>{mahalla} - {period} trendi</CardTitle>
               </CardHeader>
               <CardContent className="h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
@@ -104,7 +104,7 @@ const Statistics = () => {
             </Card>
             <Card className="border-border/60">
               <CardHeader>
-                <CardTitle>Crime Composition</CardTitle>
+                <CardTitle>Jinoyat tarkibi</CardTitle>
               </CardHeader>
               <CardContent className="h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
@@ -123,17 +123,17 @@ const Statistics = () => {
 
           <Card className="border-border/60">
             <CardHeader>
-              <CardTitle>Detailed Metrics</CardTitle>
+              <CardTitle>Batafsil ko'rsatkichlar</CardTitle>
             </CardHeader>
             <CardContent>
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Period</TableHead>
-                    <TableHead>Crimes</TableHead>
-                    <TableHead>Preventive</TableHead>
-                    <TableHead>Migration</TableHead>
-                    <TableHead>Cameras</TableHead>
+                    <TableHead>Davr</TableHead>
+                    <TableHead>Jinoyatlar</TableHead>
+                    <TableHead>Profilaktika</TableHead>
+                    <TableHead>Migratsiya</TableHead>
+                    <TableHead>Kameralar</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -155,7 +155,7 @@ const Statistics = () => {
           <div className="grid gap-6 lg:grid-cols-2">
             <Card className="border-border/60">
               <CardHeader>
-                <CardTitle>District Crime Trend</CardTitle>
+                <CardTitle>Tuman bo'yicha jinoyatlar trendi</CardTitle>
               </CardHeader>
               <CardContent className="h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
@@ -172,7 +172,7 @@ const Statistics = () => {
             </Card>
             <Card className="border-border/60">
               <CardHeader>
-                <CardTitle>Top Mahallas by Risk</CardTitle>
+                <CardTitle>Xavf bo'yicha top mahallalar</CardTitle>
               </CardHeader>
               <CardContent className="h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
@@ -189,16 +189,16 @@ const Statistics = () => {
           </div>
           <Card className="border-border/60">
             <CardHeader>
-              <CardTitle>District Summary Table</CardTitle>
+              <CardTitle>Tuman bo'yicha umumiy jadval</CardTitle>
             </CardHeader>
             <CardContent>
               <Table>
                 <TableHeader>
                   <TableRow>
                     <TableHead>Mahalla</TableHead>
-                    <TableHead>Crimes</TableHead>
-                    <TableHead>Preventive</TableHead>
-                    <TableHead>Population</TableHead>
+                    <TableHead>Jinoyatlar</TableHead>
+                    <TableHead>Profilaktika</TableHead>
+                    <TableHead>Aholi</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>

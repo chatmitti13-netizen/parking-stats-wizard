@@ -9,66 +9,66 @@ import { useUi } from "@/store/UiContext";
 
 const Alerts = () => {
   const [alerts, setAlerts] = useState<AlertItem[]>([]);
-  const [filter, setFilter] = useState("All");
+  const [filter, setFilter] = useState("Barchasi");
   const [selected, setSelected] = useState<AlertItem | null>(null);
   const { setNotifications } = useUi();
 
   useEffect(() => {
     mockApi.getAlerts().then((items) => {
       setAlerts(items);
-      setNotifications(items.filter((item) => item.status === "Unread").length);
+      setNotifications(items.filter((item) => item.status === "O'qilmagan").length);
     });
   }, [setNotifications]);
 
   const filtered = useMemo(() => {
-    return alerts.filter((alert) => filter === "All" || alert.status === filter);
+    return alerts.filter((alert) => filter === "Barchasi" || alert.status === filter);
   }, [alerts, filter]);
 
   const badgeVariant = (severity: string) => {
-    if (severity === "High") return "destructive";
-    if (severity === "Medium") return "secondary";
+    if (severity === "Yuqori") return "destructive";
+    if (severity === "O'rta") return "secondary";
     return "outline";
   };
 
   const handleMarkAsRead = () => {
     if (!selected) return;
     const updated = alerts.map((alert) =>
-      alert.id === selected.id ? { ...alert, status: "Read" } : alert
+      alert.id === selected.id ? { ...alert, status: "O'qilgan" } : alert
     );
     setAlerts(updated);
-    setSelected({ ...selected, status: "Read" });
-    setNotifications(updated.filter((item) => item.status === "Unread").length);
+    setSelected({ ...selected, status: "O'qilgan" });
+    setNotifications(updated.filter((item) => item.status === "O'qilmagan").length);
   };
 
   return (
     <div className="space-y-6">
       <section>
-        <h2 className="text-2xl font-semibold">Alerts Center</h2>
-        <p className="text-muted-foreground">Monitor severity, read status, and detail drill-downs.</p>
+        <h2 className="text-2xl font-semibold">Ogohlantirishlar markazi</h2>
+        <p className="text-muted-foreground">Daraja, o'qilgan holati va tafsilotlarni kuzating.</p>
       </section>
       <Card className="border-border/60">
         <CardHeader className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-          <CardTitle>Notifications</CardTitle>
+          <CardTitle>Bildirishnomalar</CardTitle>
           <select
             value={filter}
             onChange={(event) => setFilter(event.target.value)}
             className="h-10 rounded-lg border border-border bg-background px-3 text-sm"
           >
-            <option value="All">All</option>
-            <option value="Unread">Unread</option>
-            <option value="Read">Read</option>
+            <option value="Barchasi">Barchasi</option>
+            <option value="O'qilmagan">O'qilmagan</option>
+            <option value="O'qilgan">O'qilgan</option>
           </select>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Alert</TableHead>
+                <TableHead>Ogohlantirish</TableHead>
                 <TableHead>Mahalla</TableHead>
-                <TableHead>Severity</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Date</TableHead>
-                <TableHead>Action</TableHead>
+                <TableHead>Daraja</TableHead>
+                <TableHead>Holat</TableHead>
+                <TableHead>Sana</TableHead>
+                <TableHead>Amal</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -80,12 +80,12 @@ const Alerts = () => {
                     <Badge variant={badgeVariant(alert.severity)}>{alert.severity}</Badge>
                   </TableCell>
                   <TableCell>
-                    <Badge variant={alert.status === "Unread" ? "secondary" : "outline"}>{alert.status}</Badge>
+                    <Badge variant={alert.status === "O'qilmagan" ? "secondary" : "outline"}>{alert.status}</Badge>
                   </TableCell>
                   <TableCell>{alert.date}</TableCell>
                   <TableCell>
                     <Button size="sm" variant="outline" onClick={() => setSelected(alert)}>
-                      View
+                      Ko'rish
                     </Button>
                   </TableCell>
                 </TableRow>
@@ -107,10 +107,10 @@ const Alerts = () => {
                 <p>{selected.details}</p>
                 <div className="flex items-center gap-2">
                   <Badge variant={badgeVariant(selected.severity)}>{selected.severity}</Badge>
-                  <Badge variant={selected.status === "Unread" ? "secondary" : "outline"}>{selected.status}</Badge>
+                  <Badge variant={selected.status === "O'qilmagan" ? "secondary" : "outline"}>{selected.status}</Badge>
                 </div>
                 <Button className="w-full" variant="outline" onClick={handleMarkAsRead}>
-                  Mark as Read
+                  O'qilgan deb belgilash
                 </Button>
               </div>
             </>

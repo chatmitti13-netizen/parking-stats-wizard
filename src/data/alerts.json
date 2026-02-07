@@ -1,29 +1,29 @@
 [
   {
     "id": "ALT-210",
-    "title": "Spike in theft reports",
+    "title": "O'g'irliklar bo'yicha keskin o'sish",
     "mahalla": "Yangiobod",
-    "severity": "High",
-    "status": "Unread",
+    "severity": "Yuqori",
+    "status": "O'qilmagan",
     "date": "2024-09-04",
-    "details": "Reported theft incidents increased by 18% over 7 days."
+    "details": "So'nggi 7 kunda o'g'irlik holatlari 18% ga oshdi."
   },
   {
     "id": "ALT-207",
-    "title": "Migration imbalance warning",
+    "title": "Migratsiya nomutanosibligi ogohlantirishi",
     "mahalla": "Navbahor",
-    "severity": "Medium",
-    "status": "Read",
+    "severity": "O'rta",
+    "status": "O'qilgan",
     "date": "2024-09-01",
-    "details": "Out-migration exceeds in-migration by 12%."
+    "details": "Chiqib ketish oqimi kirib kelishdan 12% yuqori."
   },
   {
     "id": "ALT-204",
-    "title": "Camera coverage gap",
+    "title": "Kamera qamrovi yetishmasligi",
     "mahalla": "Gulzor",
-    "severity": "Low",
-    "status": "Unread",
+    "severity": "Past",
+    "status": "O'qilmagan",
     "date": "2024-08-29",
-    "details": "Two intersections still have no camera coverage."
+    "details": "Ikki kesishmada hali ham kamera qamrovi yo'q."
   }
 ]

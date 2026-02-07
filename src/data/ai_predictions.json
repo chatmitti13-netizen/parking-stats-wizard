@@ -6,23 +6,23 @@
     { "mahalla": "Bunyodkor", "score": 41 }
   ],
   "forecast": [
-    { "month": "Sep", "value": 178 },
-    { "month": "Oct", "value": 184 },
-    { "month": "Nov", "value": 191 },
-    { "month": "Dec", "value": 176 },
-    { "month": "Jan", "value": 162 }
+    { "month": "Sen", "value": 178 },
+    { "month": "Okt", "value": 184 },
+    { "month": "Noy", "value": 191 },
+    { "month": "Dek", "value": 176 },
+    { "month": "Yan", "value": 162 }
   ],
   "emerging": [
-    { "name": "Yangiobod Market", "risk": "High" },
-    { "name": "Navbahor Transit", "risk": "Medium" },
-    { "name": "Gulzor East", "risk": "Medium" },
-    { "name": "Bunyodkor Industrial", "risk": "Low" },
-    { "name": "Do'stlik Center", "risk": "Low" }
+    { "name": "Yangiobod bozori", "risk": "Yuqori" },
+    { "name": "Navbahor tranzit", "risk": "O'rta" },
+    { "name": "Gulzor sharq", "risk": "O'rta" },
+    { "name": "Bunyodkor sanoat hududi", "risk": "Past" },
+    { "name": "Do'stlik markazi", "risk": "Past" }
   ],
   "recommendations": [
-    "Increase patrols near Yangiobod Market",
-    "Add cameras on Navbahor transit corridor",
-    "Launch migration awareness campaign in Gulzor"
+    "Yangiobod bozori atrofida patrulni kuchaytirish",
+    "Navbahor tranzit yo'lagida kameralar o'rnatish",
+    "Gulzorda migratsiya bo'yicha xabardorlik kampaniyasi"
   ],
   "heatmapGrid": [
     [12, 18, 22, 16, 10],
