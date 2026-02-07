@@ -1,0 +1,38 @@
+{
+  "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+  "crimeTotals": [142, 128, 151, 164, 172, 158, 149, 176, 190, 178, 166, 181],
+  "preventiveCases": [82, 76, 88, 94, 102, 91, 89, 96, 110, 104, 97, 105],
+  "migration": [14, 18, 12, 16, 22, 20, 15, 19, 24, 21, 18, 23],
+  "population": 78600,
+  "cameras": 412,
+  "topMahallas": [
+    { "name": "Yangiobod", "value": 36 },
+    { "name": "Navbahor", "value": 28 },
+    { "name": "Gulzor", "value": 22 },
+    { "name": "Bunyodkor", "value": 18 },
+    { "name": "Do'stlik", "value": 14 }
+  ],
+  "latestSubmissions": [
+    {
+      "id": "SUB-1204",
+      "mahalla": "Yangiobod",
+      "officer": "Said Akhmedov",
+      "period": "Aug 2024",
+      "status": "Pending"
+    },
+    {
+      "id": "SUB-1201",
+      "mahalla": "Navbahor",
+      "officer": "Jamshid Qosimov",
+      "period": "Aug 2024",
+      "status": "Approved"
+    },
+    {
+      "id": "SUB-1198",
+      "mahalla": "Gulzor",
+      "officer": "Dilfuza Karimova",
+      "period": "Aug 2024",
+      "status": "Draft"
+    }
+  ]
+}
