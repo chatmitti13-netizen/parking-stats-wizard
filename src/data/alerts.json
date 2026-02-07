@@ -1,0 +1,29 @@
+[
+  {
+    "id": "ALT-210",
+    "title": "Spike in theft reports",
+    "mahalla": "Yangiobod",
+    "severity": "High",
+    "status": "Unread",
+    "date": "2024-09-04",
+    "details": "Reported theft incidents increased by 18% over 7 days."
+  },
+  {
+    "id": "ALT-207",
+    "title": "Migration imbalance warning",
+    "mahalla": "Navbahor",
+    "severity": "Medium",
+    "status": "Read",
+    "date": "2024-09-01",
+    "details": "Out-migration exceeds in-migration by 12%."
+  },
+  {
+    "id": "ALT-204",
+    "title": "Camera coverage gap",
+    "mahalla": "Gulzor",
+    "severity": "Low",
+    "status": "Unread",
+    "date": "2024-08-29",
+    "details": "Two intersections still have no camera coverage."
+  }
+]

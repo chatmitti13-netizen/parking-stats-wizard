@@ -1,0 +1,46 @@
+[
+  {
+    "id": "MH-001",
+    "name": "Yangiobod",
+    "code": "MFY-1001",
+    "population": 12450,
+    "area": 2.6,
+    "assignedOfficer": "Said Akhmedov",
+    "status": "Active",
+    "phone": "+998 90 112 34 56",
+    "description": "Central mahalla with mixed residential and market zones."
+  },
+  {
+    "id": "MH-002",
+    "name": "Gulzor",
+    "code": "MFY-1002",
+    "population": 9800,
+    "area": 2.1,
+    "assignedOfficer": "Dilfuza Karimova",
+    "status": "Active",
+    "phone": "+998 90 221 45 67",
+    "description": "Growing mahalla with new housing developments."
+  },
+  {
+    "id": "MH-003",
+    "name": "Navbahor",
+    "code": "MFY-1003",
+    "population": 11200,
+    "area": 2.4,
+    "assignedOfficer": "Jamshid Qosimov",
+    "status": "Inactive",
+    "phone": "+998 90 332 56 78",
+    "description": "Agricultural mahalla with seasonal migration."
+  },
+  {
+    "id": "MH-004",
+    "name": "Bunyodkor",
+    "code": "MFY-1004",
+    "population": 8600,
+    "area": 1.9,
+    "assignedOfficer": "Otabek Musaev",
+    "status": "Active",
+    "phone": "+998 90 443 67 89",
+    "description": "Industrial corridor with logistics facilities."
+  }
+]
