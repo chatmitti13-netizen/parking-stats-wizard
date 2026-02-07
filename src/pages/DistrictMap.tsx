@@ -13,6 +13,7 @@ const DistrictMap = () => {
   const [selectedMahalla, setSelectedMahalla] = useState<any>(null);
   const [layers, setLayers] = useState({ heatmap: true, migration: false, cameras: false });
   const [mapReady, setMapReady] = useState(true);
+  const [mapLoading, setMapLoading] = useState(true);
 
   const chartData = useMemo(() => {
     if (!selectedMahalla) return null;
@@ -25,6 +26,7 @@ const DistrictMap = () => {
     if (!mapContainer.current) return;
     if (!window.mapboxgl) {
       setMapReady(false);
+      setMapLoading(false);
       return;
     }
 
@@ -197,6 +199,7 @@ const DistrictMap = () => {
         setSelectedMahalla(feature.properties);
       });
 
+      setMapLoading(false);
     });
 
     return () => {
@@ -250,6 +253,11 @@ const DistrictMap = () => {
           ) : (
             <div className="absolute inset-0 flex items-center justify-center bg-muted/30 text-sm text-muted-foreground">
               Mapbox scripts failed to load. Check network access for the CDN.
+            </div>
+          )}
+          {mapLoading && mapReady && (
+            <div className="absolute inset-0 flex items-center justify-center bg-muted/20 text-sm text-muted-foreground">
+              Loading map layers...
             </div>
           )}
           <div className="absolute bottom-4 left-4 rounded-xl bg-card/90 backdrop-blur border border-border px-4 py-3 text-xs shadow">

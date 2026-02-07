@@ -34,6 +34,7 @@ const Mahallas = () => {
       return;
     }
 
+    setMapReady(true);
     window.mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
     const map = new window.mapboxgl.Map({
       container: mapContainer.current,

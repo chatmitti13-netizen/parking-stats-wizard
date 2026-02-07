@@ -5,15 +5,20 @@ import { Button } from "@/components/Button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/Table";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { mockApi, AlertItem } from "@/services/mockApi";
+import { useUi } from "@/store/UiContext";
 
 const Alerts = () => {
   const [alerts, setAlerts] = useState<AlertItem[]>([]);
   const [filter, setFilter] = useState("All");
   const [selected, setSelected] = useState<AlertItem | null>(null);
+  const { setNotifications } = useUi();
 
   useEffect(() => {
-    mockApi.getAlerts().then(setAlerts);
-  }, []);
+    mockApi.getAlerts().then((items) => {
+      setAlerts(items);
+      setNotifications(items.filter((item) => item.status === "Unread").length);
+    });
+  }, [setNotifications]);
 
   const filtered = useMemo(() => {
     return alerts.filter((alert) => filter === "All" || alert.status === filter);
@@ -23,6 +28,16 @@ const Alerts = () => {
     if (severity === "High") return "destructive";
     if (severity === "Medium") return "secondary";
     return "outline";
+  };
+
+  const handleMarkAsRead = () => {
+    if (!selected) return;
+    const updated = alerts.map((alert) =>
+      alert.id === selected.id ? { ...alert, status: "Read" } : alert
+    );
+    setAlerts(updated);
+    setSelected({ ...selected, status: "Read" });
+    setNotifications(updated.filter((item) => item.status === "Unread").length);
   };
 
   return (
@@ -94,7 +109,9 @@ const Alerts = () => {
                   <Badge variant={badgeVariant(selected.severity)}>{selected.severity}</Badge>
                   <Badge variant={selected.status === "Unread" ? "secondary" : "outline"}>{selected.status}</Badge>
                 </div>
-                <Button className="w-full" variant="outline">Mark as Read</Button>
+                <Button className="w-full" variant="outline" onClick={handleMarkAsRead}>
+                  Mark as Read
+                </Button>
               </div>
             </>
           )}
