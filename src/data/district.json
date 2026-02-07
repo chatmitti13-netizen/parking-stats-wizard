@@ -1,0 +1,25 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Baxmal District Boundary"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [68.62, 40.54],
+            [68.82, 40.54],
+            [68.88, 40.67],
+            [68.78, 40.76],
+            [68.6, 40.72],
+            [68.54, 40.62],
+            [68.62, 40.54]
+          ]
+        ]
+      }
+    }
+  ]
+}

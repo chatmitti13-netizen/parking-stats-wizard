@@ -1,0 +1,33 @@
+{
+  "riskIndex": [
+    { "mahalla": "Yangiobod", "score": 82 },
+    { "mahalla": "Navbahor", "score": 68 },
+    { "mahalla": "Gulzor", "score": 55 },
+    { "mahalla": "Bunyodkor", "score": 41 }
+  ],
+  "forecast": [
+    { "month": "Sep", "value": 178 },
+    { "month": "Oct", "value": 184 },
+    { "month": "Nov", "value": 191 },
+    { "month": "Dec", "value": 176 },
+    { "month": "Jan", "value": 162 }
+  ],
+  "emerging": [
+    { "name": "Yangiobod Market", "risk": "High" },
+    { "name": "Navbahor Transit", "risk": "Medium" },
+    { "name": "Gulzor East", "risk": "Medium" },
+    { "name": "Bunyodkor Industrial", "risk": "Low" },
+    { "name": "Do'stlik Center", "risk": "Low" }
+  ],
+  "recommendations": [
+    "Increase patrols near Yangiobod Market",
+    "Add cameras on Navbahor transit corridor",
+    "Launch migration awareness campaign in Gulzor"
+  ],
+  "heatmapGrid": [
+    [12, 18, 22, 16, 10],
+    [14, 20, 26, 21, 12],
+    [11, 17, 25, 19, 9],
+    [8, 14, 18, 15, 7]
+  ]
+}
